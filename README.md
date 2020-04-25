@@ -32,16 +32,21 @@ To program the SPI flash in the Pano only [xc3sprog](https://github.com/tomverbe
 ## Serial port 
 
 A serial port is required for a console.  Please see this [page](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2) for connection information.
-The baudrate is 1000000.
+The baudrate is 1000000. The serial port can be connected to either the DDC lines
+on the DVI port or the micro HDMI port.  Just make sure to program the correct
+image for your connections.
 
 ## Programming the Pano
 
 Install and configure xc3sprog for your JTAG programmer.  See this [xc3sprog](https://github.com/tomverbeure/panologic-g2/wiki/xc3sprog) in
 the Pano Hacker's wiki for more information.
 
-Run make.  This is a good time to go for a coffee break.  The bitstream plus
-the Linux kernel and filesystem uses almost all of the G2's 16mbyte flash
-takes approximately 5 minutes to program.
+For a serial console on the micro HDMI connector just run "make".  If your
+serial console is connected to the DVI connector then run "make image-dvi-flash".
+
+This is a good time to go for a coffee break.  The bitstream plus the Linux 
+kernel and filesystem uses almost all of the G2's 16mbyte flash takes 
+approximately 5 minutes to program.
 
 ```
 skip@dell-790:~/pano/working/panog2_linux$ make
