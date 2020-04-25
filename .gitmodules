@@ -1,0 +1,3 @@
+[submodule "pano"]
+	path = pano
+	url = https://github.com/skiphansen/pano_blocks
