@@ -32,7 +32,7 @@ To program the SPI flash in the Pano only [xc3sprog](https://github.com/tomverbe
 ## Serial port 
 
 A serial port is required for a console.  Please see this [page](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2) for connection information.
-The baudrate is 115,200. The serial port can be connected to either the DDC lines
+The baudrate is 1000000. The serial port can be connected to either the DDC lines
 on the DVI port or the micro HDMI port.  Just make sure to program the correct
 image for your connections.
 
