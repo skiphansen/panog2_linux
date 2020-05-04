@@ -1,4 +1,4 @@
-## Linux on the Panologic G2
+## Linux on the Pano Logic G2
 
 This repository supplements the following repositories:
 
@@ -20,25 +20,27 @@ This repository supplements the following repositories:
 * A 5 volt compatible serial port
 * A cable (clip leads, etc) to connect the serial port to the Pano.
 
-Note: The [Rev C](https://github.com/tomverbeure/panologic-g2/wiki/Identifying-different-Pano-generations-and-revisions) Pano can run Linux, but the flash is too small to boot Linux directly, hence it is not supported here.
+Note: The [Rev C](https://github.com/tomverbeure/Pano Logic-g2/wiki/Identifying-different-Pano-generations-and-revisions) Pano can run Linux, but the flash is too small to boot Linux directly, hence it is not supported here.
 
 ## Software Requirements
 
 * GNU make
 * xc3sprog
 
-To program the SPI flash in the Pano only [xc3sprog](https://github.com/tomverbeure/panologic-g2/wiki/xc3sprog) is needed, you DO NOT need Xilinx's ISE.
+To program the SPI flash in the Pano only [xc3sprog](https://github.com/tomverbeure/Pano Logic-g2/wiki/xc3sprog) is needed, you DO NOT need Xilinx's ISE.
 
 ## Serial port 
 
 A serial port is required for a console.  Please see this [page](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2) for connection information.
-The baudrate is 1000000. The serial port can be connected to either the DDC lines
-on the DVI port or the micro HDMI port.  Just make sure to program the correct
-image for your connections.
+The baudrate is 38400. The serial port can be connected to either the DDC lines
+on the DVI port or the micro HDMI port.  
+
+The micro HDMI connector is used by default, if you want the serial port to 
+be connected via the DVI then set the "UART_PORT" environment variable to "dvi".
 
 ## Programming the Pano
 
-Install and configure xc3sprog for your JTAG programmer.  See this [xc3sprog](https://github.com/tomverbeure/panologic-g2/wiki/xc3sprog) in
+Install and configure xc3sprog for your JTAG programmer.  See this [xc3sprog](https://github.com/tomverbeure/Pano Logic-g2/wiki/xc3sprog) in
 the Pano Hacker's wiki for more information.
 
 For a serial console on the micro HDMI connector just run "make".  If your
@@ -163,7 +165,7 @@ skip@dell-790:~/pano/working/panog2_linux$
 ## Running 
 
 Once the Pano has been flashed power cycle the Pano and after about a minute
-you should be greeted by a login prompt :
+you should be greeted by a login prompt:
 
 ```
         __   _ __      _  __
@@ -318,6 +320,34 @@ round-trip min/avg/max = 19.764/20.322/20.881 ms
 root@buildroot:~#
 ```
 
+### Building everything from sources
+
+You will need:
+
+* A PC running Linux natively or in a VM.
+* Xilinx ISE 14.7.
+
+The free Webpack version of Xilinx [ISE 14.7](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html) is used for development.
+Download the latest Windows 10 version which supports the Spartan 6 family of 
+chips used in the second generation Pano Logic device.
+
+1. Clone the https://github.com/skiphansen/panog2_linux repository
+2. cd into .../panog2_linux
+3. Run "make build_all"
+
+This would be a good time to go to breakfast/lunch/dinner.  It takes about 30
+minutes for a complete build with a good Internet connection.  A large amount
+of utilities and code will be downloaded from the Internet the first time 
+build_all is run.
+
+**NB:** The Ethernet interface currently includes a workaround kludge for a fatal
+routing error which occurs on the Pano platform [(see)](https://github.com/enjoy-digital/liteeth/issues/38) which "kind of works, most of the time".
+The prebuilt binaries have been cherry picked, if your build results in poor 
+or no Ethernet functionality this is probably the reason. Simply 
+re-run build_all again and it might work better.
+
+**A proper fix would be most welcome!**
+
 ## SPI memory map for Linux on Pano G2 rev A/B
 
 The minimum flash erase size is 256k (0x40000).  
@@ -338,13 +368,13 @@ may be updated independently.
 | 0x9c0000 -> 0xdbffff | 0x5b0000 | root file system   | 3970k    |
 | 0xdc0000 -> 0xffffff |    -     | 2.2 mb for future  |  0       |
 
-
 ## Pano Links
 
-Link to other Panologic information can be found [here](https://github.com/tomverbeure/panologic-g2/wiki/Panologic-links#pano-links)
+litex-buildenv's [howto](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2)
+Links to other Pano Logic information can be found [here](https://github.com/tomverbeure/Pano Logic-g2/wiki/Pano Logic-links#pano-links)
 
 ## LEGAL 
 
-My original work (various patches and the setup.sh script) is released under the 
+My original work (Makefile and various patches) is released under the 
 GNU General Public License, version 2.
 
