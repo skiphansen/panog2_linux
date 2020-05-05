@@ -20,19 +20,19 @@ This repository supplements the following repositories:
 * A 5 volt compatible serial port
 * A cable (clip leads, etc) to connect the serial port to the Pano.
 
-Note: The [Rev C](https://github.com/tomverbeure/Pano Logic-g2/wiki/Identifying-different-Pano-generations-and-revisions) Pano can run Linux, but the flash is too small to boot Linux directly, hence it is not supported here.
+Note: The [Rev C](https://github.com/tomverbeure/panologic-g2/wiki/Identifying-different-Pano-generations-and-revisions) Pano can run Linux, but the flash is too small to boot Linux directly, hence it is not supported here.
 
 ## Software Requirements
 
 * GNU make
 * xc3sprog
 
-To program the SPI flash in the Pano only [xc3sprog](https://github.com/tomverbeure/Pano Logic-g2/wiki/xc3sprog) is needed, you DO NOT need Xilinx's ISE.
+To program the SPI flash in the Pano only [xc3sprog](https://github.com/tomverbeure/panologic-g2/wiki/xc3sprog) is needed, you DO NOT need Xilinx's ISE.
 
 ## Serial port 
 
 A serial port is required for a console.  Please see this [page](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2) for connection information.
-The baudrate is 38400. The serial port can be connected to either the DDC lines
+The baudrate is 115,200. The serial port can be connected to either the DDC lines
 on the DVI port or the micro HDMI port.  
 
 The micro HDMI connector is used by default, if you want the serial port to 
@@ -40,7 +40,7 @@ be connected via the DVI then set the "UART_PORT" environment variable to "dvi".
 
 ## Programming the Pano
 
-Install and configure xc3sprog for your JTAG programmer.  See this [xc3sprog](https://github.com/tomverbeure/Pano Logic-g2/wiki/xc3sprog) in
+Install and configure xc3sprog for your JTAG programmer.  See this [xc3sprog](https://github.com/tomverbeure/panologic-g2/wiki/xc3sprog) in
 the Pano Hacker's wiki for more information.
 
 For a serial console on the micro HDMI connector just run "make".  If your
@@ -341,7 +341,7 @@ of utilities and code will be downloaded from the Internet the first time
 build_all is run.
 
 **NB:** The Ethernet interface currently includes a workaround kludge for a fatal
-routing error which occurs on the Pano platform [(see)](https://github.com/enjoy-digital/liteeth/issues/38) which "kind of works, most of the time".
+routing error which occurs on the Pano platform [(issue #38)](https://github.com/enjoy-digital/liteeth/issues/38) which "kind of works, most of the time".
 The prebuilt binaries have been cherry picked, if your build results in poor 
 or no Ethernet functionality this is probably the reason. Simply 
 re-run build_all again and it might work better.
@@ -371,7 +371,7 @@ may be updated independently.
 ## Pano Links
 
 litex-buildenv's [howto](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2)
-Links to other Pano Logic information can be found [here](https://github.com/tomverbeure/Pano Logic-g2/wiki/Pano Logic-links#pano-links)
+Links to other Pano Logic information can be found [here](https://github.com/tomverbeure/panologic-g2/wiki/Pano Logic-links#pano-links)
 
 ## LEGAL 
 
