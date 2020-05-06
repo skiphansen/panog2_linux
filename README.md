@@ -371,7 +371,7 @@ may be updated independently.
 ## Pano Links
 
 litex-buildenv's [howto](https://github.com/timvideos/litex-buildenv/wiki/HowTo-Linux-on-Pano-Logic-G2)
-Links to other Pano Logic information can be found [here](https://github.com/tomverbeure/panologic-g2/wiki/Pano Logic-links#pano-links)
+Links to other Pano Logic information can be found [here](https://github.com/tomverbeure/panologic-g2/wiki/Panologic-links)
 
 ## LEGAL 
 
