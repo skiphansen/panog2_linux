@@ -11,6 +11,7 @@ This repository supplements the following repositories:
 ## Why?  
 * Pano logic is not yet supported by linux-on-litex-vexriscv-prebuilt.
 * Pano support is in flux and some features have not been merged into the upstream repositories yet.
+* Litex development is very active and changes occasionally break the Pano platform.
 
 ## HW Requirements
 
@@ -177,11 +178,11 @@ you should be greeted by a login prompt:
  (c) Copyright 2012-2020 Enjoy-Digital
  (c) Copyright 2007-2015 M-Labs
 
- BIOS built on Apr 25 2020 11:21:03
- BIOS CRC passed (a925dc64)
+ BIOS built on May  7 2020 10:06:08
+ BIOS CRC passed (48bfb28b)
 
  Migen git sha1: 19d5eae
- LiteX git sha1: 2d018826
+ LiteX git sha1: 61473830
 
 --=============== SoC ==================--
 CPU:       VexRiscv @ 50MHz
@@ -216,7 +217,7 @@ Executing booted program at 0x41100000
 *** VexRiscv BIOS ***
 *** Supervisor ***
 [    0.000000] No DTB passed to the kernel
-[    0.000000] Linux version 5.0.13 (skip@dell-790) (gcc version 8.4.0 (Buildroot 2020.05-git-01081-ga5c711d671)) #1 Wed Apr 22 17:27:32 PDT 2020
+[    0.000000] Linux version 5.0.13 (skip@dell-790) (gcc version 8.4.0 (Buildroot 2020.05-git-01289-g3d070040ba)) #1 Mon May 4 15:57:30 PDT 2020
 [    0.000000] earlycon: sbi0 at I/O port 0x0 (options '')
 [    0.000000] printk: bootconsole [sbi0] enabled
 [    0.000000] Initial ramdisk at: 0x(ptrval) (8388608 bytes)
@@ -238,56 +239,56 @@ Executing booted program at 0x41100000
 [    0.000000] irqchip: LiteX VexRiscv irqchip driver initialized. IE: 0, mask: 0x00000000, pending: 0x00000000
 [    0.000000] irqchip: LiteX VexRiscv irqchip settings: mask CSR 0x9c0, pending CSR 0xdc0
 [    0.000000] clocksource: riscv_clocksource: mask: 0xffffffffffffffff max_cycles: 0xb8812736b, max_idle_ns: 440795202655 ns
-[    0.000423] sched_clock: 64 bits at 50MHz, resolution 20ns, wraps every 4398046511100ns
-[    0.004576] Console: colour dummy device 80x25
-[    0.006991] Calibrating delay loop (skipped), value calculated using timer frequency.. 100.00 BogoMIPS (lpj=200000)
-[    0.008961] pid_max: default: 32768 minimum: 301
-[    0.024141] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.026401] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.107469] devtmpfs: initialized
-[    0.166403] random: get_random_bytes called from setup_net+0x4c/0x188 with crng_init=0
-[    0.176339] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-[    0.178876] futex hash table entries: 256 (order: -1, 3072 bytes)
-[    0.194323] NET: Registered protocol family 16
-[    0.504980] FPGA manager framework
-[    0.534599] clocksource: Switched to clocksource riscv_clocksource
-[    0.993483] NET: Registered protocol family 2
-[    1.019512] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes)
-[    1.021575] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
-[    1.024127] TCP bind hash table entries: 1024 (order: 0, 4096 bytes)
-[    1.025634] TCP: Hash tables configured (established 1024 bind 1024)
-[    1.032083] UDP hash table entries: 256 (order: 0, 4096 bytes)
-[    1.033789] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
-[    1.060866] Unpacking initramfs...
-[    3.571957] Initramfs unpacking failed: junk in compressed archive
-[    3.605447] workingset: timestamp_bits=30 max_order=14 bucket_order=0
-[    4.418383] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
-[    4.420418] io scheduler mq-deadline registered
-[    4.421347] io scheduler kyber registered
-[    4.440526] LiteX SoC Controller driver initialized
-[    7.270383] f0002000.serial: ttyLXU0 at MMIO 0xf0002000 (irq = 0, base_baud = 0) is a liteuart
-[    7.273680] printk: console [liteuart0] enabled
-[    7.273680] printk: console [liteuart0] enabled
-[    7.275899] printk: bootconsole [sbi0] disabled
-[    7.275899] printk: bootconsole [sbi0] disabled
-[    7.321040] litex-spiflash f0005000.spiflash: m25p128 (16384 Kbytes)
-[    7.360856] libphy: Fixed MDIO Bus: probed
-[    7.365044] liteeth f0006000.mac: Failed to get IRQ, using polling
-[    7.395429] liteeth f0006000.mac eth0: irq 0, mapped at a0006000
-[    7.406138] i2c /dev entries driver
-[    7.519660] NET: Registered protocol family 10
-[    7.559833] Segment Routing with IPv6
-[    7.563964] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
-[    7.647618] Freeing unused kernel memory: 148K
-[    7.648480] This architecture does not have kernel memory protection.
-[    7.649562] Run /init as init process
+[    0.000422] sched_clock: 64 bits at 50MHz, resolution 20ns, wraps every 4398046511100ns
+[    0.010660] Console: colour dummy device 80x25
+[    0.015657] Calibrating delay loop (skipped), value calculated using timer frequency.. 100.00 BogoMIPS (lpj=200000)
+[    0.026108] pid_max: default: 32768 minimum: 301
+[    0.044263] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.051580] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.138225] devtmpfs: initialized
+[    0.198701] random: get_random_bytes called from setup_net+0x4c/0x188 with crng_init=0
+[    0.214301] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.224090] futex hash table entries: 256 (order: -1, 3072 bytes)
+[    0.244064] NET: Registered protocol family 16
+[    0.557560] FPGA manager framework
+[    0.589409] clocksource: Switched to clocksource riscv_clocksource
+[    1.054221] NET: Registered protocol family 2
+[    1.082834] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes)
+[    1.091340] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+[    1.099010] TCP bind hash table entries: 1024 (order: 0, 4096 bytes)
+[    1.106180] TCP: Hash tables configured (established 1024 bind 1024)
+[    1.116899] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    1.123473] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    1.155275] Unpacking initramfs...
+[    3.666125] Initramfs unpacking failed: junk in compressed archive
+[    3.704346] workingset: timestamp_bits=30 max_order=14 bucket_order=0
+[    4.520458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    4.527975] io scheduler mq-deadline registered
+[    4.532291] io scheduler kyber registered
+[    4.554672] LiteX SoC Controller driver initialized
+[    7.384429] f0002000.serial: ttyLXU0 at MMIO 0xf0002000 (irq = 0, base_baud = 0) is a liteuart
+[    7.398928] printk: console [liteuart0] enabled
+[    7.398928] printk: console [liteuart0] enabled
+[    7.408122] printk: bootconsole [sbi0] disabled
+[    7.408122] printk: bootconsole [sbi0] disabled
+[    7.460646] litex-spiflash f0005000.spiflash: m25p128 (16384 Kbytes)
+[    7.504785] libphy: Fixed MDIO Bus: probed
+[    7.512021] liteeth f0006000.mac: Failed to get IRQ, using polling
+[    7.546640] liteeth f0006000.mac eth0: irq 0, mapped at a0006000
+[    7.562986] i2c /dev entries driver
+[    7.677062] NET: Registered protocol family 10
+[    7.720644] Segment Routing with IPv6
+[    7.727445] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    7.815786] Freeing unused kernel memory: 148K
+[    7.820066] This architecture does not have kernel memory protection.
+[    7.826741] Run /init as init process
 mount: mounting tmpfs on /dev/shm failed: Invalid argument
 mount: mounting tmpfs on /tmp failed: Invalid argument
 mount: mounting tmpfs on /run failed: Invalid argument
 Starting syslogd: OK
 Starting klogd: OK
 Running sysctl: OK
-Saving random seed: [   12.892732] random: dd: uninitialized urandom read (512 bytes read)
+Saving random seed: [   13.087549] random: dd: uninitialized urandom read (512 bytes read)
 OK
 Starting network: OK
 
@@ -321,6 +322,16 @@ root@buildroot:~#
 ```
 
 ### Building everything from sources
+
+** !!!!!!!!!!!!!!!!!!!! WARNING WILL ROBINSON !!!!!!!!!!!!!!!!!!!! **
+A recent kernel configuration change related to SMP work has broken the 
+Linux kernel on the Pano.  The kernel should build, but the boot will hang
+after init is started.
+
+The gateware and the root filesystem images should work, but use the committed
+Linux kernel (Image.fbi) until this issue is resolved.
+
+** !!!!!!!!!!!!!!!!!!!! WARNING WILL ROBINSON !!!!!!!!!!!!!!!!!!!! **
 
 You will need:
 
