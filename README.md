@@ -36,16 +36,13 @@ A serial port is required for a console.  Please see this [page](https://github.
 The baudrate is 115,200. The serial port can be connected to either the DDC lines
 on the DVI port or the micro HDMI port.  
 
-The micro HDMI connector is used by default, if you want the serial port to 
-be connected via the DVI then set the "UART_PORT" environment variable to "dvi".
-
 ## Programming the Pano
 
 Install and configure xc3sprog for your JTAG programmer.  See this [xc3sprog](https://github.com/tomverbeure/panologic-g2/wiki/xc3sprog) in
 the Pano Hacker's wiki for more information.
 
 For a serial console on the micro HDMI connector just run "make".  If your
-serial console is connected to the DVI connector then run "make image-dvi-flash".
+serial console is connected to the DVI connector then run "make UART_PORT=dvi".
 
 This is a good time to go for a coffee break.  The bitstream plus the Linux 
 kernel and filesystem uses almost all of the G2's 16mbyte flash takes 
@@ -341,6 +338,10 @@ You will need:
 The free Webpack version of Xilinx [ISE 14.7](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/archive-ise.html) is used for development.
 Download the latest Windows 10 version which supports the Spartan 6 family of 
 chips used in the second generation Pano Logic device.
+
+The default build connects the serial port to the micro HDMI connector, if you 
+want the serial port to be connected via the DVI then set the "UART_PORT" 
+environment variable to "dvi" prior to building.
 
 1. Clone the https://github.com/skiphansen/panog2_linux repository
 2. cd into .../panog2_linux
