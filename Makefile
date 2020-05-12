@@ -19,7 +19,16 @@ export BUILD_BUILDROOT=1
 export TARGET=net
 export FIRMWARE=linux
 export MAKE_LITEX_EXTRA_CMDLINE=-Op uart_connection $(UART_PORT)
-export BR2_EXTERNAL=$(CURDIR)/litex-buildenv/pano/buildroot/
+export LOCAL_BR2=$(CURDIR)/buildroot
+LOCAL_CONFIGS=$(LOCAL_BR2)/configs
+
+export BR2_EXTERNAL=$(CURDIR)/buildroot
+# configure buildroot from local configuration files
+export BR2_DEFCONFIG=$(LOCAL_CONFIGS)/litex_vexriscv_defconfig
+export BR2_PACKAGE_BUSYBOX_CONFIG=$(LOCAL_CONFIGS)/busybox.config
+
+export BD_COMMIT=2020.02.1
+export LLV_COMMIT=9e2964fc5423cb7fb1b098b9fa66d36224871f72
 
 ENV_DOWNLOADED = litex-buildenv/build/.env_downloaded
 LITEX_BUILD_DIR = build/pano_logic_g2_net_vexriscv.linux
@@ -33,7 +42,6 @@ DTB_FBI = litex-buildenv/$(LITEX_BUILD_DIR)/software/linux/rv32.fbi
 
 help:
 
-XC3SPROG_OPTS = -c $(CABLE) -v
 include $(TOPDIR)/pano/make/common.mk
 include $(TOPDIR)/pano/make/ise.mk
 
@@ -59,7 +67,7 @@ flash_rootfs:
 	@echo "Flashing rootfs..."
 	$(XC3SPROG) $(XC3SPROG_OPTS) -I$(BSCAN_SPI_BITFILE) $(PREBUILT_DIR)/rootfs.cpio.fbi:W:10223616:bin
 
-flash_image: gateware-flash kernel-flash rootfs-flash
+flash_image: flash_gateware flash_kernel flash_rootfs
 
 read_flash:
 	$(XC3SPROG) $(XC3SPROG_OPTS) -I$(BSCAN_SPI_BITFILE) readback.bin:R:0:bin:33554432
@@ -82,6 +90,7 @@ $(GATEWARE_BIT_FILE): | litex-buildenv $(ENV_DOWNLOADED)
 
 litex-buildenv/$(GATEWARE_BIN_FILE): | litex-buildenv $(ENV_DOWNLOADED) $(GATEWARE_BIT_FILE)
 	(cd litex-buildenv; . ./scripts/enter-env.sh; make DUMMY_FLASH=y gateware-flash)
+
 
 build_all: $(GATEWARE_BIT_FILE)
 	(cd litex-buildenv; . ./scripts/enter-env.sh; ./scripts/build-linux.sh)
