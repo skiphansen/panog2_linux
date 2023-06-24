@@ -8,13 +8,10 @@ This repository supplements the following repositories:
 * [litex](https://github.com/enjoy-digital/litex)
 * [liteeth](https://github.com/enjoy-digital/liteeth)
 * [linux-on-litex-vexriscv](https://github.com/litex-hub/linux-on-litex-vexriscv)
-* [linux-on-litex-vexriscv-prebuilt](https://github.com/litex-hub/linux-on-litex-vexriscv-prebuilt)
 
 ## Why?  
 
-* Pano logic is not yet supported by linux-on-litex-vexriscv-prebuilt.
-* Pano support is in flux and some features have not been merged into the upstream repositories yet.
-* LiteX development is very active and changes occasionally break the Pano platform.
+* Pano logic is not a supported platform for linux-on-litex-vexriscv.
 * Make LiteX development on the Pano Logic G2 more convenient.
 
 ## HW Requirements
